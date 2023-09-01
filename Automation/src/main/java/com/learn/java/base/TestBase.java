@@ -1,5 +1,6 @@
 package com.learn.java.base;
 
+import java.io.File;
 import java.time.Duration;
 import java.util.HashMap;
 import java.util.Map;
@@ -30,6 +31,8 @@ public class TestBase {
 		options.setBrowserVersion("116");
 		options.addArguments("start-maximized");
 		options.addArguments("disable-popup-blocking");
+		//extension to block ads
+		options.addExtensions(new File("./Extensions/AdBlock — best ad blocker 5.9.0.0.crx"));
 		
 		Map<String, Object> prefs = new HashMap<String, Object>();
 		prefs.put("autofill.profile_enabled", false);
