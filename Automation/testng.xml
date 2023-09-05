@@ -6,6 +6,7 @@
 		<parameter name="url" value="https://demoqa.com/" />
 		<classes>
 			<class name="com.learn.java.tests.LandingPageTest" />
+			<class name="com.learn.java.tests.ElementsPageTest" />
 		</classes>
 	</test> <!-- Test -->
 </suite> <!-- Suite -->

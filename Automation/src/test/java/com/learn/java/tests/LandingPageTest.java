@@ -21,7 +21,11 @@ public class LandingPageTest extends TestBase{
 	@BeforeClass
 	public void setUp(String url) throws Exception
 	{
-		initialization(url);
+		try {
+			initialization(url);
+		} catch (Exception e) {
+			System.out.println("Unable to initialize driver for test execution.");
+		}
 	}
 	
 	@Test()
@@ -34,6 +38,10 @@ public class LandingPageTest extends TestBase{
 	@AfterClass
 	public void tearDown() throws Exception
 	{
-		closeBrowser();
+		try {
+			closeBrowser();
+		} catch (Exception e) {
+			System.out.println("Unable to close browser.");
+		}
 	}
 }

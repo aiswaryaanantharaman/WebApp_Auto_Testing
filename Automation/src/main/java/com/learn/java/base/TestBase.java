@@ -31,8 +31,8 @@ public class TestBase {
 		options.setBrowserVersion("116");
 		options.addArguments("start-maximized");
 		options.addArguments("disable-popup-blocking");
-		//extension to block ads
-		options.addExtensions(new File("./Extensions/AdBlock — best ad blocker 5.9.0.0.crx"));
+//		//extension to block ads
+//		options.addExtensions(new File("./Extensions/Adblock Plus - free ad blocker 3.19.0.0.crx"));
 		
 		Map<String, Object> prefs = new HashMap<String, Object>();
 		prefs.put("autofill.profile_enabled", false);
@@ -46,7 +46,7 @@ public class TestBase {
 	}
 	
 	//close browser and quit driver
-	public static void closeBrowser() throws Exception
+	public static void closeBrowser()
 	{
 		driver.close();
 		driver.quit();

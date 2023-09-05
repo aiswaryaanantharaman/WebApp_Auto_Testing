@@ -1,7 +1,6 @@
 package com.learn.java.pages;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 
@@ -14,7 +13,8 @@ public class LandingPage extends TestBase{
 	{
 		PageFactory.initElements(driver, this);
 	}
-	
+
+	//web element locator methods
 	public static WebElement pageHeader() throws Exception
 	{
 		try {
@@ -24,19 +24,73 @@ public class LandingPage extends TestBase{
 		}		
 		return element;
 	}
+
+	public WebElement elementsCard() throws Exception
+	{
+		try {
+			element = driver.findElement(By.xpath("//h5[contains(text(), 'Elements')]"));
+		} catch (Exception e) {
+			System.out.println("Unable to locate elements card.");
+		}		
+		return element;
+	}
 	
+	public WebElement formsCard() throws Exception
+	{
+		try {
+			element = driver.findElement(By.xpath("//h5[contains(text(), 'Forms')]"));
+		} catch (Exception e) {
+			System.out.println("Unable to locate forms card.");
+		}		
+		return element;
+	}
+
+	public WebElement alertsCard() throws Exception
+	{
+		try {
+			element = driver.findElement(By.xpath("//h5[contains(text(), 'Alerts')]"));
+		} catch (Exception e) {
+			System.out.println("Unable to locate alerts card.");
+		}		
+		return element;
+	}
+
+	public WebElement widgetsCard() throws Exception
+	{
+		try {
+			element = driver.findElement(By.xpath("//h5[contains(text(), 'Widgets')]"));
+		} catch (Exception e) {
+			System.out.println("Unable to locate widgets card.");
+		}		
+		return element;
+	}
+
+	public WebElement interactionsCard() throws Exception
+	{
+		try {
+			element = driver.findElement(By.xpath("//h5[contains(text(), 'Interactions')]"));
+		} catch (Exception e) {
+			System.out.println("Unable to locate interactions card.");
+		}		
+		return element;
+	}
+
 	public Boolean verifyLandingPage() throws Exception
 	{
-		Boolean status = null;
-		if(pageHeader().isDisplayed())
-		{
-			status = true;
+		try {
+			Boolean status = null;
+			if(pageHeader().isDisplayed())
+			{
+				status = true;
+			}
+			else
+			{
+				status = false;
+			}
+			return status;
+		} catch (Exception e){
+			System.out.println("Unable to verify landing page.");
+			return null;
 		}
-		else
-		{
-			status = false;
-		}
-		System.out.println(status);
-		return status;
 	}
 }
