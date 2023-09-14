@@ -21,6 +21,7 @@ public class LandingPage extends TestBase{
 			element = driver.findElement(By.xpath("//*[@id='app']//img"));
 		} catch (Exception e) {
 			System.out.println("Unable to locate element : pageHeader");
+			e.printStackTrace();
 		}		
 		return element;
 	}
@@ -31,6 +32,7 @@ public class LandingPage extends TestBase{
 			element = driver.findElement(By.xpath("//h5[contains(text(), 'Elements')]"));
 		} catch (Exception e) {
 			System.out.println("Unable to locate elements card.");
+			e.printStackTrace();
 		}		
 		return element;
 	}
@@ -41,6 +43,7 @@ public class LandingPage extends TestBase{
 			element = driver.findElement(By.xpath("//h5[contains(text(), 'Forms')]"));
 		} catch (Exception e) {
 			System.out.println("Unable to locate forms card.");
+			e.printStackTrace();
 		}		
 		return element;
 	}
@@ -51,6 +54,7 @@ public class LandingPage extends TestBase{
 			element = driver.findElement(By.xpath("//h5[contains(text(), 'Alerts')]"));
 		} catch (Exception e) {
 			System.out.println("Unable to locate alerts card.");
+			e.printStackTrace();
 		}		
 		return element;
 	}
@@ -61,6 +65,7 @@ public class LandingPage extends TestBase{
 			element = driver.findElement(By.xpath("//h5[contains(text(), 'Widgets')]"));
 		} catch (Exception e) {
 			System.out.println("Unable to locate widgets card.");
+			e.printStackTrace();
 		}		
 		return element;
 	}
@@ -71,26 +76,22 @@ public class LandingPage extends TestBase{
 			element = driver.findElement(By.xpath("//h5[contains(text(), 'Interactions')]"));
 		} catch (Exception e) {
 			System.out.println("Unable to locate interactions card.");
+			e.printStackTrace();
 		}		
 		return element;
 	}
 
 	public Boolean verifyLandingPage() throws Exception
 	{
-		try {
-			Boolean status = null;
-			if(pageHeader().isDisplayed())
-			{
-				status = true;
-			}
-			else
-			{
-				status = false;
-			}
-			return status;
-		} catch (Exception e){
-			System.out.println("Unable to verify landing page.");
-			return null;
+		Boolean status = null;
+		if(pageHeader().isDisplayed())
+		{
+			status = true;
 		}
+		else
+		{
+			status = false;
+		}
+		return status;
 	}
 }
