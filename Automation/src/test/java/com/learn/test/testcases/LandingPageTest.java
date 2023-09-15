@@ -1,5 +1,7 @@
 package com.learn.test.testcases;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
@@ -12,6 +14,8 @@ import com.learn.java.pages.LandingPage;
 public class LandingPageTest extends TestBase{
 
 	LandingPage landingpage = new LandingPage();
+	private static final Logger logger = LogManager.getLogger(LandingPageTest.class);
+	
 	public LandingPageTest()
 	{
 		super();
@@ -24,7 +28,7 @@ public class LandingPageTest extends TestBase{
 		try {
 			initialization(url);
 		} catch (Exception e) {
-			System.out.println("Unable to initialize driver for test execution.");
+			logger.error("Unable to initialize driver for test execution.");
 		}
 	}
 	
@@ -41,7 +45,7 @@ public class LandingPageTest extends TestBase{
 		try {
 			closeBrowser();
 		} catch (Exception e) {
-			System.out.println("Unable to close browser.");
+			logger.error("Unable to close browser.");
 		}
 	}
 }

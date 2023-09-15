@@ -3,6 +3,8 @@ package com.learn.test.testcases;
 import java.util.ArrayList;
 import java.util.Iterator;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
@@ -19,6 +21,7 @@ public class ElementsPageTest extends TestBase{
 
 	LandingPage landingPage = new LandingPage();	
 	ElementsPage elementsPage = new ElementsPage();
+	private static final Logger logger = LogManager.getLogger(ElementsPageTest.class);
 	
 	@Parameters({"url"})
 	@BeforeClass

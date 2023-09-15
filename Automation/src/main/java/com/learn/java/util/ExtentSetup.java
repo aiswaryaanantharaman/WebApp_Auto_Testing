@@ -7,7 +7,6 @@ import com.learn.java.base.TestBase;
 
 public class ExtentSetup extends TestBase{
 
-	static String projectPath = System.getProperty("user.dir");
 	static String logFile = projectPath + "/Test_logs.log";
 	
 	public static ExtentReports setupExtentReport()
@@ -20,7 +19,8 @@ public class ExtentSetup extends TestBase{
 		extent.attachReporter(sparkReport);
 		sparkReport.config().setDocumentTitle("Test Execution - DEMOQA");
 		sparkReport.config().setTheme(Theme.STANDARD);
-		sparkReport.config().setReportName("AUTOMATED TEST EXECUTION - DEMOQA");
+		sparkReport.config().setReportName("AUTOMATED TEST EXECUTION - DEMOQA   " +
+										   "<a href=" + logFile + " class=\"text-primary\" >CLICK HERE TO VIEW LOG FILE</a>");
 		return extent;
 	}
 

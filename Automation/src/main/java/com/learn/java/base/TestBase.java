@@ -24,6 +24,9 @@ public class TestBase {
 	public static ExtentReports extent;
 	public static ExtentTest extentTest;
 	
+	public static String projectPath = System.getProperty("user.dir");
+	public static String screenshotsFolder = projectPath + "/test-output/Screenshots/";
+	
 	public TestBase()
 	{
 		
@@ -57,8 +60,6 @@ public class TestBase {
 	//screenshot code for failed tests
 	public static void screenshot(String testName)
 	{
-		String projectPath = System.getProperty("user.dir");
-		String screenshotsFolder = projectPath + "/test-output/Screenshots/";
 		File scrFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
         try {
 			FileUtils.copyFile(scrFile, new File(screenshotsFolder + testName + ".png"));

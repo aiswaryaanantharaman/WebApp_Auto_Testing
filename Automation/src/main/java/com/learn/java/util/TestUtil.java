@@ -3,6 +3,8 @@ package com.learn.java.util;
 import java.time.Duration;
 import java.util.ArrayList;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
@@ -16,6 +18,7 @@ public class TestUtil extends TestBase{
 	public static long PAGE_LOAD_TIMEOUT = 2000;
 	public static long IMPLICIT_WAIT = 2000;
 	public static ExcelUtil excelUtil;
+	private static final Logger logger = LogManager.getLogger(TestUtil.class);
 	
 	public void clickAfterExplicitWait(long timeout, String xpath) throws Exception
 	{
@@ -31,7 +34,7 @@ public class TestUtil extends TestBase{
 			//provide excel sheet path
 			excelUtil = new ExcelUtil(System.getProperty("user.dir") + "\\src\\main\\resources\\TestData\\TestData.xlsx");
 		} catch (Exception e) {
-			System.out.println("Unable to fetch excel sheet.");
+			logger.error("Unable to fetch excel sheet.");
 			e.printStackTrace();
 		}		
 		ArrayList<Object[]> testData = new ArrayList<Object[]>();

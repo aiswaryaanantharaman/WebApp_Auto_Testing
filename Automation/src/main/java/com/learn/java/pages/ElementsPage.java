@@ -2,6 +2,8 @@ package com.learn.java.pages;
 
 import java.util.List;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
@@ -15,7 +17,8 @@ public class ElementsPage extends TestBase{
 	public static WebElement element;
 	TestUtil util = new TestUtil();
 	ExcelUtil excelUtil = new ExcelUtil(System.getProperty("user.dir") + "\\src\\main\\resources\\TestData\\TestData.xlsx");
-
+	private static final Logger logger = LogManager.getLogger(ElementsPage.class);
+	
 	public ElementsPage()
 	{
 		PageFactory.initElements(driver, this);
@@ -26,7 +29,7 @@ public class ElementsPage extends TestBase{
 		try {
 			element = driver.findElement(By.xpath("//span[contains(text(), 'Text Box')]"));
 		} catch (Exception e) {
-			System.out.println("Unable to locate text box option in side nav.");
+			logger.error("Unable to locate text box option in side nav.");
 			e.printStackTrace();
 		}		
 		return element;
@@ -37,7 +40,7 @@ public class ElementsPage extends TestBase{
 		try {
 			element = driver.findElement(By.xpath("//*[@id='userName']"));
 		} catch (Exception e) {
-			System.out.println("Unable to locate full name field.");
+			logger.error("Unable to locate full name field.");
 			e.printStackTrace();
 		}		
 		return element;
@@ -48,7 +51,7 @@ public class ElementsPage extends TestBase{
 		try {
 			element = driver.findElement(By.xpath(" //*[@id='userEmail']"));
 		} catch (Exception e) {
-			System.out.println("Unable to locate email field.");
+			logger.error("Unable to locate email field.");
 			e.printStackTrace();
 		}		
 		return element;
@@ -59,7 +62,7 @@ public class ElementsPage extends TestBase{
 		try {
 			element = driver.findElement(By.xpath(" //*[@id='currentAddress']"));
 		} catch (Exception e) {
-			System.out.println("Unable to locate current address field.");
+			logger.error("Unable to locate current address field.");
 			e.printStackTrace();
 		}		
 		return element;
@@ -70,7 +73,7 @@ public class ElementsPage extends TestBase{
 		try {
 			element = driver.findElement(By.xpath("//*[@id='permanentAddress']"));
 		} catch (Exception e) {
-			System.out.println("Unable to locate permanent address field.");
+			logger.error("Unable to locate permanent address field.");
 			e.printStackTrace();
 		}		
 		return element;
@@ -81,7 +84,7 @@ public class ElementsPage extends TestBase{
 		try {
 			element = driver.findElement(By.xpath("//button[@id='submit']"));
 		} catch (Exception e) {
-			System.out.println("Unable to locate submit btn.");
+			logger.error("Unable to locate submit btn.");
 			e.printStackTrace();
 		}		
 		return element;
@@ -92,7 +95,7 @@ public class ElementsPage extends TestBase{
 		try {
 			element = driver.findElement(By.xpath("//div[@id='output']"));
 		} catch (Exception e) {
-			System.out.println("Unable to locate record output.");
+			logger.error("Unable to locate record output.");
 			e.printStackTrace();
 		}		
 		return element;
@@ -103,7 +106,7 @@ public class ElementsPage extends TestBase{
 		try {
 			element = driver.findElement(By.xpath("//p[@id='name']"));
 		} catch (Exception e) {
-			System.out.println("Unable to locate name on record.");
+			logger.error("Unable to locate name on record.");
 			e.printStackTrace();
 		}		
 		return element;
@@ -114,7 +117,7 @@ public class ElementsPage extends TestBase{
 		try {
 			element = driver.findElement(By.xpath("//p[@id='email']"));
 		} catch (Exception e) {
-			System.out.println("Unable to locate email on record.");
+			logger.error("Unable to locate email on record.");
 			e.printStackTrace();
 		}		
 		return element;
@@ -125,7 +128,7 @@ public class ElementsPage extends TestBase{
 		try {
 			element = driver.findElement(By.xpath("//p[@id='currentAddress']"));
 		} catch (Exception e) {
-			System.out.println("Unable to locate currentAddress on record.");
+			logger.error("Unable to locate currentAddress on record.");
 			e.printStackTrace();
 		}		
 		return element;
@@ -136,7 +139,7 @@ public class ElementsPage extends TestBase{
 		try {
 			element = driver.findElement(By.xpath("//p[@id='permanentAddress']"));
 		} catch (Exception e) {
-			System.out.println("Unable to locate permanentAddress on record.");
+			logger.error("Unable to locate permanentAddress on record.");
 			e.printStackTrace();
 		}		
 		return element;

@@ -9,9 +9,6 @@ import com.learn.java.base.TestBase;
 import com.learn.java.util.ExtentSetup;
 
 public class Listeners extends TestBase implements ITestListener{
-
-	String projectPath = System.getProperty("user.dir");
-	String screenshotsFolder = projectPath + "\\test-output\\Screenshots\\";
 	
 	public Listeners() {
 		
