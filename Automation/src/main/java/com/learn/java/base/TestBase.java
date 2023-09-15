@@ -1,19 +1,28 @@
 package com.learn.java.base;
 
 import java.io.File;
+import java.io.IOException;
 import java.time.Duration;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.apache.commons.io.FileUtils;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.testng.ITestResult;
 
+import com.aventstack.extentreports.ExtentReports;
+import com.aventstack.extentreports.ExtentTest;
 import com.learn.java.util.TestUtil;
 
 public class TestBase {
 	
 	public static WebDriver driver;
+	public static ExtentReports extent;
+	public static ExtentTest extentTest;
 	
 	public TestBase()
 	{
@@ -43,6 +52,19 @@ public class TestBase {
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(TestUtil.IMPLICIT_WAIT));
 		driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(TestUtil.PAGE_LOAD_TIMEOUT));
 		driver.get(url);
+	}
+	
+	//screenshot code for failed tests
+	public static void screenshot(String testName)
+	{
+		String projectPath = System.getProperty("user.dir");
+		String screenshotsFolder = projectPath + "/test-output/Screenshots/";
+		File scrFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
+        try {
+			FileUtils.copyFile(scrFile, new File(screenshotsFolder + testName + ".png"));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 	
 	//close browser and quit driver
