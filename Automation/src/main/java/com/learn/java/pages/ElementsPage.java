@@ -164,10 +164,11 @@ public class ElementsPage extends TestBase{
 	public Boolean verifyTextBox(String name, String email, String currentAddress, String permAddress) throws Exception
 	{
 		Boolean positiveTest = null;
-		//			Boolean testWithoutFullName = null;
+		Boolean negativeTest = null;
 		Boolean status = null;
 		//navigate to text box section
 		textBox().click();
+		//positive test
 		//provide inputs
 		fullnameField().clear();
 		fullnameField().sendKeys(name);
@@ -192,20 +193,31 @@ public class ElementsPage extends TestBase{
 		{
 			positiveTest = false;
 		}
-		//			//refresh page to reset inputs
-		//			driver.navigate().refresh();
-		//			//click submit btn without providing inputs
-		//			util.clickAfterExplicitWait(2000, "//button[@id='submit']");
-		//			List<WebElement> recordData = driver.findElements(By.xpath("//div[@id='output']//p"));
-		//			if(recordData.size() == 0)
-		//			{
-		//				testWithoutFullName = true;
-		//			}
-		//			else
-		//			{
-		//				testWithoutFullName = false;
-		//			}
-		if(positiveTest.equals(true)) // && testWithoutFullName.equals(true))
+		//refresh page to reset text box contents
+		driver.navigate().refresh();
+		Thread.sleep(2000);
+		//negative test
+		//provide inputs
+		fullnameField().clear();
+		fullnameField().sendKeys(name);
+		//provide incorrect email
+		emailField().clear();
+		emailField().sendKeys("QA");
+		currentAddressField().clear();
+		currentAddressField().sendKeys(currentAddress);
+		permanentAddressField().clear();
+		permanentAddressField().sendKeys(permAddress);
+		//click submit btn
+		util.clickAfterExplicitWait(2000, "//button[@id='submit']");
+		if(emailField().getAttribute("class").contains("error"))
+		{
+			negativeTest = true;
+		}
+		else
+		{
+			negativeTest = false;
+		}
+		if(positiveTest.equals(true) && negativeTest.equals(true))
 		{
 			status = true;
 		}
