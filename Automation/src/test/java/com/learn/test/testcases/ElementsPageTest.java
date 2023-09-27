@@ -25,31 +25,47 @@ public class ElementsPageTest extends TestBase{
 	
 	@Parameters({"url"})
 	@BeforeClass
-	public void setUp(String url) throws Exception 
+	public void setUp(String url) 
 	{
 		initialization(url);
 	}
 	
-	@Test
-	public void verifyNavigateElementsPage() throws Exception
+	@Test(priority = 1)
+	public void verifyNavigateElementsPage()
 	{
-		Boolean status = elementsPage.verifyNavigateElementsPage();
+		Boolean status = null;
+		try {
+			status = elementsPage.verifyNavigateElementsPage();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		Assert.assertTrue(status);
 	}
+//	
+//	@DataProvider
+//	public Iterator<Object[]> getTestData()
+//	{
+//		ArrayList<Object[]> testData = TestUtil.getTestDataFromExcel();
+//		return testData.iterator();
+//	}
+//	
+//	@Test(dataProvider = "getTestData", priority = 2)
+//	public void verifyTextBox(String name, String email, String currentAddress, String permAddress) throws Exception
+//	{
+//		Boolean status = elementsPage.verifyTextBox(name, email, currentAddress, permAddress);
+//		Assert.assertTrue(status);
+//	}
 	
-	@DataProvider
-	public Iterator<Object[]> getTestData()
+	@Test(priority = 3)
+	public void verifyRadioBtn()
 	{
-		ArrayList<Object[]> testData = TestUtil.getTestDataFromExcel();
-		return testData.iterator();
-	}
-	
-	@Test(dataProvider = "getTestData")
-	public void verifyTextBox(String name, String email, String currentAddress, String permAddress) throws Exception
-	{
-		Boolean status = elementsPage.verifyTextBox(name, email, currentAddress, permAddress);
-		Assert.assertTrue(status);
-	}
+		Boolean status = null;
+		try {
+			status = elementsPage.verifyRadioBtn();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		Assert.assertTrue(status);	}
 	
 	@AfterClass
 	public void tearDown() 

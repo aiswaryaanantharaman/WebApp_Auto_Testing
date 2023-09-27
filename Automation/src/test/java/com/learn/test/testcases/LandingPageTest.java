@@ -23,7 +23,7 @@ public class LandingPageTest extends TestBase{
 	
 	@Parameters({"url"})
 	@BeforeClass
-	public void setUp(String url) throws Exception
+	public void setUp(String url)
 	{
 		try {
 			initialization(url);
@@ -33,9 +33,14 @@ public class LandingPageTest extends TestBase{
 	}
 	
 	@Test()
-	public void verifylandingPageTest() throws Exception
+	public void verifylandingPageTest()
 	{
-		Boolean status = landingpage.verifyLandingPage();
+		Boolean status = null;
+		try {
+			status = landingpage.verifyLandingPage();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		Assert.assertTrue(status);;
 	}
 	

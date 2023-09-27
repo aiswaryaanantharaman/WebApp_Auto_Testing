@@ -33,7 +33,7 @@ public class TestBase {
 	}
 	
 	//open browser and navigate to url
-	public static void initialization(String url) throws Exception
+	public static void initialization(String url)
 	{
 		String projectPath = System.getProperty("user.dir");
 		System.out.println(projectPath);

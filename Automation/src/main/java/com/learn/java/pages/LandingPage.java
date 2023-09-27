@@ -19,7 +19,7 @@ public class LandingPage extends TestBase{
 	}
 
 	//web element locator methods
-	public static WebElement pageHeader() throws Exception
+	public static WebElement pageHeader()
 	{
 		try {
 			element = driver.findElement(By.xpath("//*[@id='app']//img"));
@@ -30,7 +30,7 @@ public class LandingPage extends TestBase{
 		return element;
 	}
 
-	public WebElement elementsCard() throws Exception
+	public WebElement elementsCard()
 	{
 		try {
 			element = driver.findElement(By.xpath("//h5[contains(text(), 'Elements')]"));
@@ -41,7 +41,7 @@ public class LandingPage extends TestBase{
 		return element;
 	}
 	
-	public WebElement formsCard() throws Exception
+	public WebElement formsCard()
 	{
 		try {
 			element = driver.findElement(By.xpath("//h5[contains(text(), 'Forms')]"));
@@ -52,7 +52,7 @@ public class LandingPage extends TestBase{
 		return element;
 	}
 
-	public WebElement alertsCard() throws Exception
+	public WebElement alertsCard()
 	{
 		try {
 			element = driver.findElement(By.xpath("//h5[contains(text(), 'Alerts')]"));
@@ -63,7 +63,7 @@ public class LandingPage extends TestBase{
 		return element;
 	}
 
-	public WebElement widgetsCard() throws Exception
+	public WebElement widgetsCard()
 	{
 		try {
 			element = driver.findElement(By.xpath("//h5[contains(text(), 'Widgets')]"));
@@ -74,7 +74,7 @@ public class LandingPage extends TestBase{
 		return element;
 	}
 
-	public WebElement interactionsCard() throws Exception
+	public WebElement interactionsCard()
 	{
 		try {
 			element = driver.findElement(By.xpath("//h5[contains(text(), 'Interactions')]"));
@@ -85,7 +85,7 @@ public class LandingPage extends TestBase{
 		return element;
 	}
 
-	public Boolean verifyLandingPage() throws Exception
+	public Boolean verifyLandingPage()
 	{
 		Boolean status = null;
 		if(pageHeader().isDisplayed())

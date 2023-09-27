@@ -24,7 +24,7 @@ public class ElementsPage extends TestBase{
 		PageFactory.initElements(driver, this);
 	}
 
-	public WebElement textBox() throws Exception
+	public WebElement textBox()
 	{
 		try {
 			element = driver.findElement(By.xpath("//span[contains(text(), 'Text Box')]"));
@@ -35,7 +35,7 @@ public class ElementsPage extends TestBase{
 		return element;
 	}
 
-	public WebElement fullnameField() throws Exception
+	public WebElement fullnameField()
 	{
 		try {
 			element = driver.findElement(By.xpath("//*[@id='userName']"));
@@ -46,7 +46,7 @@ public class ElementsPage extends TestBase{
 		return element;
 	}
 
-	public WebElement emailField() throws Exception
+	public WebElement emailField()
 	{
 		try {
 			element = driver.findElement(By.xpath(" //*[@id='userEmail']"));
@@ -57,7 +57,7 @@ public class ElementsPage extends TestBase{
 		return element;
 	}
 
-	public WebElement currentAddressField() throws Exception
+	public WebElement currentAddressField()
 	{
 		try {
 			element = driver.findElement(By.xpath(" //*[@id='currentAddress']"));
@@ -68,7 +68,7 @@ public class ElementsPage extends TestBase{
 		return element;
 	}
 
-	public WebElement permanentAddressField() throws Exception
+	public WebElement permanentAddressField()
 	{
 		try {
 			element = driver.findElement(By.xpath("//*[@id='permanentAddress']"));
@@ -79,7 +79,7 @@ public class ElementsPage extends TestBase{
 		return element;
 	}
 
-	public WebElement submitBtn() throws Exception
+	public WebElement submitBtn()
 	{
 		try {
 			element = driver.findElement(By.xpath("//button[@id='submit']"));
@@ -90,7 +90,7 @@ public class ElementsPage extends TestBase{
 		return element;
 	}
 
-	public WebElement recordOutput() throws Exception
+	public WebElement recordOutput()
 	{
 		try {
 			element = driver.findElement(By.xpath("//div[@id='output']"));
@@ -101,7 +101,7 @@ public class ElementsPage extends TestBase{
 		return element;
 	}
 
-	public WebElement nameOnRecord() throws Exception
+	public WebElement nameOnRecord()
 	{
 		try {
 			element = driver.findElement(By.xpath("//p[@id='name']"));
@@ -112,7 +112,7 @@ public class ElementsPage extends TestBase{
 		return element;
 	}
 
-	public WebElement emailOnRecord() throws Exception
+	public WebElement emailOnRecord()
 	{
 		try {
 			element = driver.findElement(By.xpath("//p[@id='email']"));
@@ -123,7 +123,7 @@ public class ElementsPage extends TestBase{
 		return element;
 	}
 
-	public WebElement currentAddressOnRecord() throws Exception
+	public WebElement currentAddressOnRecord()
 	{
 		try {
 			element = driver.findElement(By.xpath("//p[@id='currentAddress']"));
@@ -134,7 +134,7 @@ public class ElementsPage extends TestBase{
 		return element;
 	}
 
-	public WebElement permanentAddressOnRecord() throws Exception
+	public WebElement permanentAddressOnRecord()
 	{
 		try {
 			element = driver.findElement(By.xpath("//p[@id='permanentAddress']"));
@@ -144,8 +144,63 @@ public class ElementsPage extends TestBase{
 		}		
 		return element;
 	}
+	
+	public WebElement radioButton()
+	{
+		try {
+			element = driver.findElement(By.xpath("//span[contains(text(), 'Radio Button')]"));
+		} catch (Exception e) {
+			logger.error("Unable to locate radio btn option in side nav.");
+			e.printStackTrace();
+		}		
+		return element;
+	}
+	
+	public WebElement yesBtn()
+	{
+		try {
+			element = driver.findElement(By.xpath("//input[@id='yesRadio']"));
+		} catch (Exception e) {
+			logger.error("Unable to locate Yes radio btn.");
+			e.printStackTrace();
+		}		
+		return element;
+	}
+	
+	public WebElement impressiveBtn()
+	{
+		try {
+			element = driver.findElement(By.xpath("//input[@id='impressiveRadio']"));
+		} catch (Exception e) {
+			logger.error("Unable to locate Impressive radio btn.");
+			e.printStackTrace();
+		}		
+		return element;
+	}
+	
+	public WebElement noBtn()
+	{
+		try {
+			element = driver.findElement(By.xpath("//input[@id='noRadio']"));
+		} catch (Exception e) {
+			logger.error("Unable to locate No radio btn.");
+			e.printStackTrace();
+		}		
+		return element;
+	}
+	
+	public WebElement successText()
+	{
+		try {
+			element = driver.findElement(By.xpath("//span[@class='text-success']"));
+		} catch (Exception e) {
+			logger.error("Unable to locate success text for radio btn click.");
+			e.printStackTrace();
+		}		
+		return element;
+	}
 
-	public Boolean verifyNavigateElementsPage() throws Exception
+	public Boolean verifyNavigateElementsPage()
 	{
 		Boolean status = null;
 		//click elements card in landing page
@@ -161,7 +216,7 @@ public class ElementsPage extends TestBase{
 		return status;
 	}
 
-	public Boolean verifyTextBox(String name, String email, String currentAddress, String permAddress) throws Exception
+	public Boolean verifyTextBox(String name, String email, String currentAddress, String permAddress)
 	{
 		Boolean positiveTest = null;
 		Boolean negativeTest = null;
@@ -195,7 +250,11 @@ public class ElementsPage extends TestBase{
 		}
 		//refresh page to reset text box contents
 		driver.navigate().refresh();
-		Thread.sleep(2000);
+		try {
+			Thread.sleep(2000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
 		//negative test
 		//provide inputs
 		fullnameField().clear();
@@ -227,4 +286,60 @@ public class ElementsPage extends TestBase{
 		}
 		return status;
 	}
+	
+	public Boolean verifyRadioBtn()
+	{
+		Boolean verifyYesBtn = null;
+		Boolean verifyImpressiveBtn = null;
+		Boolean verifyNoBtn = null;
+		Boolean status = null;
+		//navigate to radio btn section
+		radioButton().click();
+		//verify yes btn click
+		if(!yesBtn().isSelected() && yesBtn().isDisplayed())
+		{
+			util.clickAfterExplicitWait(2000, "//*[@for='yesRadio']");
+//			driver.findElement(By.xpath("//*[@for='yesRadio']")).click();
+		}
+		if(yesBtn().isEnabled() && successText().getText().equals("Yes"))
+		{
+			verifyYesBtn = true;
+		}
+		else
+		{
+			verifyYesBtn = false;
+		}
+		//verify impressive btn click
+		if(!impressiveBtn().isSelected() && impressiveBtn().isDisplayed())
+		{
+			driver.findElement(By.xpath("//*[@for='impressiveRadio']")).click();
+		}		
+		if(impressiveBtn().isEnabled() && successText().getText().equals("Impressive"))
+		{
+			verifyImpressiveBtn = true;
+		}
+		else
+		{
+			verifyImpressiveBtn = false;
+		}
+		//verify no btn
+		if(!noBtn().isEnabled() && noBtn().isDisplayed())
+		{
+			verifyNoBtn = true;
+		}
+		else
+		{
+			verifyNoBtn = false;
+		}
+		if(verifyYesBtn.equals(true) && verifyImpressiveBtn.equals(true) && verifyNoBtn.equals(true))
+		{
+			status = true;
+		}
+		else
+		{
+			status = false;
+		}
+		return status;
+	}
+
 }

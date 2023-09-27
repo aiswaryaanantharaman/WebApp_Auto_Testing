@@ -20,12 +20,16 @@ public class TestUtil extends TestBase{
 	public static ExcelUtil excelUtil;
 	private static final Logger logger = LogManager.getLogger(TestUtil.class);
 	
-	public void clickAfterExplicitWait(long timeout, String xpath) throws Exception
+	public void clickAfterExplicitWait(long timeout, String xpath)
 	{
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeout));
 		WebElement element = wait.until(ExpectedConditions.elementToBeClickable(By.xpath(xpath))); 
 		((JavascriptExecutor)driver).executeScript("arguments[0].click();", element);
-		Thread.sleep(2000);
+		try {
+			Thread.sleep(2000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
 	}
 
 	public static ArrayList<Object[]> getTestDataFromExcel()
